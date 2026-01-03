@@ -1,0 +1,63 @@
+CARA MANUAL 1
+1. pindah ke directory "backend"
+cd backend
+
+2. Export manual di bash
+export API_PORT=8080
+export DB_HOST=127.0.0.1
+export DB_PORT=3306
+export DB_USER=app_user
+export DB_PASSWORD=app_pwd
+export DB_NAME=mks_finance_dw
+
+3. go run backendnya
+go run ./cmd/api
+
+=========================
+CARA MANUAL 2 (pakai nilai credential di .env.local)
+
+1. Run shell command berikut di directory backend
+```
+set -a
+source backend/.env
+set +a
+```
+
+2. Tinggal go run backend apinya
+go run ./backend/cmd/api
+==========================================
+CARA BEST PRACTICE utk Dev di host: direnv
+auto-load env saat Anda cd ke folder project, dan auto-unload saat keluar.
+
+1. Install direnv (di mac ini sudah install !!!)
+brew install direnv
+
+2. Hook ke shell (zsh): (step ini juga sdh dijalankan !!!)
+```bash
+echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+3. Simpan env di backend/.env (seperti di atas), lalu:
+```bash
+cd backend
+direnv allow
+```
+
+
+===========================================
+Test hit api via curl
+
+A) Health
+curl -s http://localhost:8080/api/v1/health | jq
+
+B) List customers
+curl -s "http://localhost:8080/api/v1/customers?limit=20&offset=0" | jq
+
+C) Customer profile
+curl -s "http://localhost:8080/api/v1/customers/CUS021517F4204F/profile" | jq
+
+
+lsof -nP -iTCP:8080 -sTCP:LISTEN
+
+kill -9 <PID>

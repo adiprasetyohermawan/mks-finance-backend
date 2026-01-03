@@ -1,0 +1,31 @@
+1) List API yang sudah dibuat (dipakai Frontend)
+Semua endpoint di bawah menggunakan prefix API_BASE (dari VITE_API_BASE) + path.
+
+A. Service / Health
+ 1. GET /api/v1/health
+  • Tujuan: health-check service (backend up/down)
+
+B. Customers (List & Search)
+ 2. GET /api/v1/customers
+  • Tujuan: list customer + pagination + filter/sort
+  • Query params (opsional, sesuai UI Anda):
+  • limit (number)
+  • offset (number)
+  • q (string: search by name/NIK/city)
+  • status (string)
+  • gender (string)
+  • segment (string)
+  • sort_by (string: mis. last_updated, registration_date, full_name)
+  • order (string: asc|desc)
+
+C. Customer Profile (360)
+ 3. GET /api/v1/customers/{customerId}/profile
+  • Tujuan: data customer 360 (customer + credit applications + vehicle ownership)
+
+D. Dashboard (KPI)
+ 4. GET /api/v1/stats/kpi
+  • Tujuan: KPI cards & breakdown untuk dashboard
+
+E. Sync Evidence / Monitoring
+ 5. GET /api/v1/sync/health
+  • Tujuan: status sinkronisasi (mis. status, sla_target_seconds, lag_seconds, last_success_at, last_error)

@@ -1,0 +1,116 @@
+############################################
+# mks-finance-backend .gitignore
+# Focus: backend service + local dev tooling
+############################################
+
+# --- OS / Editor junk ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# --- Secrets / env files (never commit) ---
+.env
+.env.*
+!.env.example
+.envrc
+
+# Common secret material
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdb
+*.crt
+*.cer
+*.der
+
+# --- Logs / dumps / local artifacts ---
+*.log
+logs/
+log/
+*.pid
+*.seed
+*.tmp
+*.swp
+*.swo
+
+# DB dumps / backups (keep them out of git)
+*.sql
+*.dump
+*.bak
+*.backup
+*.tar
+*.tar.gz
+*.tgz
+
+# --- Java / JVM (Spring Boot, Maven/Gradle) ---
+# Build outputs
+**/target/
+**/build/
+
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
+# If you run locally and produce heap/thread dumps
+*.hprof
+*.jfr
+
+# Maven
+.mvn/timing.properties
+
+# Gradle
+.gradle/
+
+# --- Node (only if repo contains node tooling/scripts) ---
+**/node_modules/
+**/dist/
+**/.vite/
+**/.cache/
+**/.next/
+**/coverage/
+
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# --- Python (only if repo contains python tooling/scripts) ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# --- Docker / local volumes (DO NOT COMMIT) ---
+# Local named bind-mount folders commonly used by docker-compose
+mysql_data/
+postgres_data/
+metabase_data/
+schema_history/
+connect_plugins/
+debezium-connector-config/
+
+# Generic local runtime folders (kept broad intentionally)
+**/data/
+**/logs/
+
+# Docker compose overrides (team-dependent; keep ignored by default)
+docker-compose.override.yml
+compose.override.yml
+
+# --- Optional: local-only directories (uncomment if you keep these locally)
+# CDC/
+# db/
+# docs/
