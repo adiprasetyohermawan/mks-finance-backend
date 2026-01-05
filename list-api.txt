@@ -1,4 +1,4 @@
-1) List API yang sudah dibuat (dipakai Frontend)
+List API yang sudah dibuat (dipakai Frontend)
 Semua endpoint di bawah menggunakan prefix API_BASE (dari VITE_API_BASE) + path.
 
 A. Service / Health

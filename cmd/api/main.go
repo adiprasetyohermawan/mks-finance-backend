@@ -17,13 +17,16 @@ func main() {
 		log.Fatalf("config error: %v", err)
 	}
 
-	d, err := db.Open(cfg.MySQLDSN())
+	// d, err := db.Open(cfg.MySQLDSN())
+	dbConn, err := db.OpenPostgres(cfg.PostgresDSN())
 	if err != nil {
 		log.Fatalf("db open error: %v", err)
 	}
-	defer d.SQL.Close()
+	// defer d.SQL.Close()
+	defer dbConn.Close()
 
-	handlers := httpapi.NewHandlers(d.SQL)
+	// handlers := httpapi.NewHandlers(d.SQL)
+	handlers := httpapi.NewHandlers(dbConn)
 	router := httpapi.NewRouter(handlers)
 
 	addr := ":" + cfg.AppPort
