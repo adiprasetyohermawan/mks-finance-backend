@@ -1,0 +1,11 @@
+.git
+.gitignore
+**/*_test.go
+**/*.md
+.DS_Store
+
+# Go build output (kalau ada)
+bin/
+dist/
+out/
+tmp/
